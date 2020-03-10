@@ -60,28 +60,25 @@ export class LoginComponent implements OnInit {
     };
 
     this.authService.login(user).subscribe(data => {
-      if (!data.user) {
-        this.messageClass = 'alert alert-danger';
-        this.message = data.message;
-        this.processing = false;
-        this.enableForm();
-      } else {
-        this.messageClass = 'alert alert-success';
-        this.message = 'Login Succeded';
-        console.log('token: ', data.token);
-        this.authService.storeUserData(data.token, data.user);
-        setTimeout(() => {
-          if (this.previousUrl) {
-            this.router.navigate([this.previousUrl]);
+      this.messageClass = 'alert alert-success';
+      this.message = 'Login Succeded';
+      console.log('token: ', data.token);
+      this.authService.storeUserData(data.token, data.user);
+      setTimeout(() => {
+        if (this.previousUrl) {
+          this.router.navigate([this.previousUrl]);
 
-          } else {
-            this.router.navigate(['/blog']);
-          }
-        }, 2000);
-      }
-
+        } else {
+          this.router.navigate(['/blog']);
+        }
+      }, 2000);
+    }, (err) => {
+      console.log('error ', err);
+      this.messageClass = 'alert alert-danger';
+      this.message = 'Invalid Credentials';
+      this.processing = false;
+      this.enableForm();
     });
-
   }
 
   ngOnInit() {
