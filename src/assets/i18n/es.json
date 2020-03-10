@@ -1,0 +1,19 @@
+{
+    "blog": {
+        "title": "Título",
+        "englishLabel": "Ingles",
+        "spanishLabel": "Español",
+        "countryLabel": "País:",
+        "cityLabel": "Ciudad:",
+        "editButton": "Editar",
+        "blogTitle": "Viajes",
+        "newPostButton": "Nuevo Post",
+        "titleErrorRequired": "Campo requerido.",
+        "titleErrorLenght":"Máximo tamaño: 50, Mínimo tamaño: 5",
+        "titleErrorAlpha": "Tiene que ser alfanumerico",
+        "bodyLabel": "Cuerpo del mensaje",
+        "goBackButton": "Atrás",
+        "submitButton": "Aceptar"
+
+    }
+}

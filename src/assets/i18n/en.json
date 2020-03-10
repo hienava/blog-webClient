@@ -1,0 +1,18 @@
+{
+    "blog": {
+        "title": "Title",
+        "englishLabel": "English",
+        "spanishLabel": "Spanish",
+        "countryLabel": "Country:",
+        "cityLabel": "City:",
+        "editButton": "Edit",
+        "blogTitle": "Blog Feed",
+        "newPostButton": "New Post",
+        "titleErrorRequired": "This field is required.",
+        "titleErrorLenght":"Max length: 50, Min length: 5",
+        "titleErrorAlpha": "Must be a letter or number",
+        "bodyLabel": "Body",
+        "goBackButton": "Go Back",
+        "submitButton": "Submit"
+    }
+}
