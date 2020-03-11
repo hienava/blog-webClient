@@ -10,48 +10,58 @@
 <!-- Edit Blog Form -->
 <form (submit)="updateBlogSubmit()" *ngIf="!loading">
   <!-- Title Field -->
-  <div class="form-group">
+  <div *ngIf="!readOnly" class="form-group">
     <label for="title">Title</label>
     <!-- Title Input -->
-    <input [disabled]="processing || readOnly" type="text" name="title" placeholder="*Blog Title" class="form-control"  [(ngModel)]="blog.title" />
+    <input [disabled]="processing || readOnly" type="text" name="title" placeholder="*Blog Title" class="form-control"
+      [(ngModel)]="blog.title" />
   </div>
-  <div class="form-group">
+  <div *ngIf="!readOnly" class="form-group">
     <label for="country">Country</label>
     <!-- Title Input -->
-    <input [disabled]="processing || readOnly" type="text" name="country" placeholder="Country" class="form-control"  [(ngModel)]="blog.country" />
+    <input [disabled]="processing || readOnly" type="text" name="country" placeholder="Country" class="form-control"
+      [(ngModel)]="blog.country" />
   </div>
-  <div class="form-group">
+  <div *ngIf="!readOnly" class="form-group">
     <label for="city">City</label>
     <!-- Title Input -->
-    <input [disabled]="processing || readOnly" type="text" name="city" placeholder="City" class="form-control"  [(ngModel)]="blog.city" />
+    <input [disabled]="processing || readOnly" type="text" name="city" placeholder="City" class="form-control"
+      [(ngModel)]="blog.city" />
   </div>
 
-  <div class="form-group">
-      <label for="date">Date</label>
-      <input [disabled]="processing || readOnly" type="text" name="date" placeholder="Date" class="form-control"  [(ngModel)]="blog.travelDate" />
-    </div>
+  <div *ngIf="!readOnly" class="form-group">
+    <label for="date">Date</label>
+    <input [disabled]="processing || readOnly" type="text" name="date" placeholder="Date" class="form-control"
+      [(ngModel)]="blog.travelDate" />
+  </div>
 
-    <div class="form-group">
-      <label for="photoAlbum">Photo Album</label>
-      <input [disabled]="processing || readOnly" type="text" name="photoAlbum" placeholder="" class="form-control"  [(ngModel)]="blog.urlPhotoAlbum" />
-    </div>
+  <div *ngIf="!readOnly" class="form-group">
+    <label for="photoAlbum">Photo Album</label>
+    <input [disabled]="processing || readOnly" type="text" name="photoAlbum" placeholder="" class="form-control"
+      [(ngModel)]="blog.urlPhotoAlbum" />
+  </div>
   <!-- Body Field -->
   <div class="form-group">
-    <label for="body">Body</label>
+    <label *ngIf="readOnly" for="body" >{{blog.title}}</label>
+    <label *ngIf="!readOnly" for="body" >Body</label>
     <!-- Body Input -->
-    <textarea [disabled]="processing || readOnly" name="body" rows="8" cols="80" [(ngModel)]="blog.body" class="form-control" placeholder="*Blog Body"></textarea>
+    <textarea [disabled]="processing || readOnly" name="body" rows="8" cols="80" [(ngModel)]="blog.body"
+      class="form-control" placeholder="*Blog Body"></textarea>
   </div>
 
   <div *ngIf="!readOnly" class="form-group">
     <app-upload-file></app-upload-file>
-    </div>
+  </div>
 
   <!-- Delete Button -->
-  <a [routerLink]="['/delete-blog/', blog._id]"><button  [disabled]="processing" *ngIf="!readOnly" type="button" name="button" class="btn btn-danger">Delete</button></a>
+  <a [routerLink]="['/delete-blog/', blog._id]"><button [disabled]="processing" *ngIf="!readOnly" type="button"
+      name="button" class="btn btn-danger">Delete</button></a>
   <!-- Go Back Button -->
-  <button [disabled]="processing" type="button" name="button" class="btn btn-success" (click)="goBack()">Go Back</button>
+  <button [disabled]="processing" type="button" name="button" class="btn btn-success" (click)="goBack()">Go
+    Back</button>
   <!-- Go Back Button -->
-  <button [disabled]="processing" *ngIf="isPhotoAlbum" type="button" name="button" class="btn btn-info" (click)="viewPhotoAlbum(photoAlbumUrl)">View Photo Album</button>
+  <button [disabled]="processing" *ngIf="isPhotoAlbum" type="button" name="button" class="btn btn-info"
+    (click)="viewPhotoAlbum(photoAlbumUrl)">View Photo Album</button>
   <!-- Save Changes Button -->
   <button [disabled]="processing" *ngIf="!readOnly" type="submit" name="save" class="btn btn-info">Save Changes</button>
 

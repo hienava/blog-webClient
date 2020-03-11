@@ -104,7 +104,7 @@ export class BlogComponent implements OnInit {
         this.enableNewBlogForm();
       } else {
         this.messageClass = 'alert alert-success';
-        this.message = data.message;
+        this.message = 'Blog saved!!';
         this.getAllBlogs();
         setTimeout(() => {
           this.newPost = false;

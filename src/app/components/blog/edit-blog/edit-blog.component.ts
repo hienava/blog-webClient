@@ -66,7 +66,6 @@ export class EditBlogComponent implements OnInit {
     this.username = user.username;
 
     this.currentUrl = this.activatedRoute.snapshot.params;
-    console.log('llega');
     this.blogService.getBlog(this.currentUrl.id).subscribe((data: any) => {
       if (!data) {
         this.messageClass = 'alert alert-danger';
