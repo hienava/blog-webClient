@@ -97,24 +97,22 @@ export class BlogComponent implements OnInit {
       createdBy: this.username
     };
     this.blogService.newBlog(blog).subscribe((data: any) => {
-      if (!data) {
-        this.messageClass = 'alert alert-danger';
-        this.message = data.message;
+      this.messageClass = 'alert alert-success';
+      this.message = 'Blog saved!!';
+      this.getAllBlogs();
+      setTimeout(() => {
+        this.newPost = false;
         this.processing = false;
+        this.message = false;
+        this.form.reset();
         this.enableNewBlogForm();
-      } else {
-        this.messageClass = 'alert alert-success';
-        this.message = 'Blog saved!!';
-        this.getAllBlogs();
-        setTimeout(() => {
-          this.newPost = false;
-          this.processing = false;
-          this.message = false;
-          this.form.reset();
-          this.enableNewBlogForm();
-        }, 2000);
-      }
-
+      }, 2000);
+    }, (err) => {
+      console.log(err);
+      this.messageClass = 'alert alert-danger';
+      this.message = 'Error saving blog.';
+      this.processing = false;
+      this.enableNewBlogForm();
     });
 
   }
