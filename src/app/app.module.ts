@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
-import {ReactiveFormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -23,10 +23,12 @@ import { DeleteBlogComponent } from './components/blog/delete-blog/delete-blog.c
 import { FileUploadModule } from 'ng2-file-upload';
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient } from '@angular/common/http';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 export function jwtTokenGetter() {
   return localStorage.getItem('token');
@@ -54,6 +56,9 @@ export function createTranslateLoader(http: HttpClient) {
   exports: [FileUploadModule],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    FlexLayoutModule,
     AppRoutingModule,
     NgxSpinnerModule,
     FileUploadModule,
@@ -61,18 +66,18 @@ export function createTranslateLoader(http: HttpClient) {
     FormsModule,
     TranslateModule.forRoot({
       loader: {
-          provide: TranslateLoader,
-          useFactory: createTranslateLoader,
-          deps: [HttpClient]
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient]
       }
-  }),
+    }),
     HttpClientModule,
     FlashMessagesModule.forRoot(),
     JwtModule.forRoot({
       config: {
         tokenGetter: jwtTokenGetter
-        },
-      })
+      },
+    })
   ],
   providers: [AuthService, AuthGuard, NotAuthGuard, BlogService],
   bootstrap: [AppComponent]

@@ -48,5 +48,11 @@
 .image {
     cursor:pointer;
     position:relative;
+    height: 350px;
 }
+.card {
+    margin-bottom: 20px;
+}
+
+
 

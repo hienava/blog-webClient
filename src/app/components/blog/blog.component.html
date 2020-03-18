@@ -7,7 +7,8 @@
 </div>
 
 <!-- New Post Button -->
-<button type="button" name="button" class="btn btn-warning" *ngIf="!newPost" (click)="newBlogForm()">{{ 'blog.newPostButton' | translate }}</button>
+<button type="button" name="button" class="btn btn-warning" *ngIf="!newPost"
+  (click)="newBlogForm()">{{ 'blog.newPostButton' | translate }}</button>
 
 <br />
 <br />
@@ -20,14 +21,16 @@
     <label for="title">{{ 'blog.title' | translate }}</label>
     <div
       [ngClass]="{'was-validated': form.controls.title.valid, 'text-danger': form.controls.title.dirty && form.controls.title.errors}">
-      <input type="text" name="title" class="form-control" placeholder="*Blog {{ 'blog.title' | translate }}" autocomplete="off"
-        formControlName="title" />
+      <input type="text" name="title" class="form-control" placeholder="*Blog {{ 'blog.title' | translate }}"
+        autocomplete="off" formControlName="title" />
       <ul class="help-block">
-        <li *ngIf="form.controls.title.dirty && form.controls.title.errors?.required">{{ 'blog.titleErrorRequired' | translate }}</li>
+        <li *ngIf="form.controls.title.dirty && form.controls.title.errors?.required">
+          {{ 'blog.titleErrorRequired' | translate }}</li>
         <li
           *ngIf="(form.controls.title.dirty && form.controls.title.errors?.minlength) || (form.controls.title.dirty && form.controls.title.errors?.maxlength)">
           {{ 'blog.titleErrorLenght' | translate }}</li>
-        <li *ngIf="form.controls.title.dirty && form.controls.title.errors?.alphaNumericValidation">{{ 'blog.titleErrorAlpha' | translate }}</li>
+        <li *ngIf="form.controls.title.dirty && form.controls.title.errors?.alphaNumericValidation">
+          {{ 'blog.titleErrorAlpha' | translate }}</li>
       </ul>
     </div>
   </div>
@@ -35,10 +38,11 @@
     <label for="country">{{ 'blog.countryLabel' | translate }} </label>
     <div
       [ngClass]="{'was-validated': form.controls.country.valid, 'text-danger': form.controls.country.dirty && form.controls.country.errors}">
-      <input type="text" name="country" class="form-control" placeholder="*{{ 'blog.countryLabel' | translate }}" autocomplete="off"
-        formControlName="country" />
+      <input type="text" name="country" class="form-control" placeholder="*{{ 'blog.countryLabel' | translate }}"
+        autocomplete="off" formControlName="country" />
       <ul class="help-block">
-        <li *ngIf="form.controls.country.dirty && form.controls.country.errors?.required">{{ 'blog.titleErrorRequired' | translate }}</li>
+        <li *ngIf="form.controls.country.dirty && form.controls.country.errors?.required">
+          {{ 'blog.titleErrorRequired' | translate }}</li>
       </ul>
     </div>
   </div>
@@ -46,10 +50,11 @@
     <label for="city">{{ 'blog.cityLabel' | translate }} </label>
     <div
       [ngClass]="{'was-validated': form.controls.city.valid, 'text-danger': form.controls.city.dirty && form.controls.city.errors}">
-      <input type="text" name="city" class="form-control" placeholder="*{{ 'blog.cityLabel' | translate }} " autocomplete="off"
-        formControlName="city" />
+      <input type="text" name="city" class="form-control" placeholder="*{{ 'blog.cityLabel' | translate }} "
+        autocomplete="off" formControlName="city" />
       <ul class="help-block">
-        <li *ngIf="form.controls.city.dirty && form.controls.city.errors?.required">{{ 'blog.titleErrorRequired' | translate }}</li>
+        <li *ngIf="form.controls.city.dirty && form.controls.city.errors?.required">
+          {{ 'blog.titleErrorRequired' | translate }}</li>
       </ul>
     </div>
   </div>
@@ -63,7 +68,8 @@
       <textarea name="body" rows="8" cols="80" placeholder="*Body" class="form-control"
         formControlName="body"></textarea>
       <ul class="help-block">
-        <li *ngIf="form.controls.body.dirty && form.controls.body.errors?.required">{{ 'blog.titleErrorRequired' | translate }}</li>
+        <li *ngIf="form.controls.body.dirty && form.controls.body.errors?.required">
+          {{ 'blog.titleErrorRequired' | translate }}</li>
         <li
           *ngIf="(form.controls.body.dirty && form.controls.body.errors?.minlength) || (form.controls.body.dirty && form.controls.body.errors?.maxlength)">
           {{ 'blog.titleErrorLenght' | translate }}</li>
@@ -73,9 +79,11 @@
 
 
   <!-- Go Back Button -->
-  <button [disabled]="processing" type="button" name="button" (click)="goBack()" class="btn btn-warning">{{ 'blog.goBackButton' | translate }}</button>
+  <button [disabled]="processing" type="button" name="button" (click)="goBack()"
+    class="btn btn-warning">{{ 'blog.goBackButton' | translate }}</button>
   <!-- Submit Button -->
-  <button [disabled]="processing || !form.valid" type="submit" name="button" class="btn btn-success">{{ 'blog.submitButton' | translate }}</button>
+  <button [disabled]="processing || !form.valid" type="submit" name="button"
+    class="btn btn-success">{{ 'blog.submitButton' | translate }}</button>
 
 </form>
 <!-- New Blog Form -->
@@ -83,31 +91,31 @@
 <!-- Panel Start -->
 <div *ngIf="!newPost">
 
-  <div class="container">
 
-    <div class="card-columns">
+  <!-- Card Start -->
 
-      <div class="card" *ngFor="let blog of blogPosts">
-        <div class="image" (click)="edit(blog._id)"> <img src="{{ blog.urlPicture }}" class="card-img-top" alt="...">
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">{{ blog.title }}</h5>
-          <p class="card-text">{{ blog.body | slice:0:50 }}...</p>
-        </div>
-        <div class="card-footer">
-          <small class="text-muted"> {{ 'blog.countryLabel' | translate }} {{ blog.country }}</small> <br />
-          <small class="text-muted">{{ 'blog.cityLabel' | translate }}  {{ blog.city }}</small> <br />
-        </div>
-        <div class="panel-footer">
-          <!-- Edit Button -->
-           <a [routerLink]="['/edit-blog/', blog._id, 'edit']" *ngIf="username === blog.createdBy"><button type="button"
-                  name="button" class="btn btn-sm btn-info">{{ 'blog.editButton' | translate }}</button></a> 
-        </div>
+  <div fxLayout="row wrap" fxLayoutGap="16px" class="align">
+    <mat-card class="card" fxFlex.lg="0 1 calc(33% - 16px)" fxFlex.lt-lg="0 1 calc(50% - 16px)" fxFlex.xs="0 1 calc(100% - 16px)"
+      *ngFor="let blog of blogPosts">
+      <img matCardImage [src]="blog.urlPicture" class="image" (click)="edit(blog._id) " alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{ blog.title }}</h5>
+        <p class="card-text">{{ blog.body | slice:0:50 }}...</p>
       </div>
-    </div>
+      <div class="card-footer">
+        <small class="text-muted"> {{ 'blog.countryLabel' | translate }} {{ blog.country }}</small> <br />
+        <small class="text-muted">{{ 'blog.cityLabel' | translate }}  {{ blog.city }}</small> <br />
+      </div>
+      <div class="panel-footer">
+        <!-- Edit Button -->
+         <a [routerLink]="['/edit-blog/', blog._id, 'edit']" *ngIf="username === blog.createdBy"><button type="button"
+                name="button" class="btn btn-sm btn-info">{{ 'blog.editButton' | translate }}</button></a> 
+      </div>
+    </mat-card>     
   </div>
-  <br />
-  <!-- </div> -->
+
+
+  <!-- Card End -->
 </div>
 
 
