@@ -7,7 +7,7 @@
 </div>
 
 <!-- New Post Button -->
-<button type="button" name="button" class="btn btn-warning" *ngIf="!newPost"
+<button type="button" name="button" class="btn btn-warning" *ngIf="newBlogButton"
   (click)="newBlogForm()">{{ 'blog.newPostButton' | translate }}</button>
 
 <br />
@@ -108,7 +108,7 @@
       </div>
       <div class="panel-footer">
         <!-- Edit Button -->
-         <a [routerLink]="['/edit-blog/', blog._id, 'edit']" *ngIf="username === blog.createdBy"><button type="button"
+         <a [routerLink]="['/edit-blog/', blog._id, 'edit']" *ngIf="username === blog.createdBy && newBlogButton === true"><button type="button"
                 name="button" class="btn btn-sm btn-info">{{ 'blog.editButton' | translate }}</button></a> 
       </div>
     </mat-card>     

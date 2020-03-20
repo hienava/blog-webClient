@@ -17,6 +17,7 @@ export class BlogComponent implements OnInit {
   message;
   messageClass;
   newPost = false;
+  newBlogButton = false;
   loadingBlogs = false;
   form: FormGroup;
   processing = false;
@@ -70,6 +71,7 @@ export class BlogComponent implements OnInit {
 
   newBlogForm() {
     this.newPost = true;
+    this.newBlogButton = false;
   }
 
   enableNewBlogForm() {
@@ -102,6 +104,7 @@ export class BlogComponent implements OnInit {
       this.getAllBlogs();
       setTimeout(() => {
         this.newPost = false;
+        this.newBlogButton = true;
         this.processing = false;
         this.message = false;
         this.form.reset();
@@ -138,6 +141,7 @@ export class BlogComponent implements OnInit {
     }, 1000);
     const user: any = JSON.parse(localStorage.getItem('user'));
     this.username = user.username;
+    this.newBlogButton = user.role === 'User' ? false : true;
     this.getAllBlogs();
   }
 
