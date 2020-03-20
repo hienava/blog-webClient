@@ -57,7 +57,6 @@ export class EditBlogComponent implements OnInit {
   }
 
   viewPhotoAlbum(photoAlbumUrl) {
-    console.log(photoAlbumUrl);
     window.open(photoAlbumUrl);
   }
 

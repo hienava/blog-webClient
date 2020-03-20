@@ -42,11 +42,11 @@
   </div>
   <!-- Body Field -->
   <div class="form-group">
-    <label *ngIf="readOnly" for="body" >{{blog.title}}</label>
+    <label *ngIf="readOnly" for="body" ><h2>{{blog.title}}</h2></label>
     <label *ngIf="!readOnly" for="body" >Body</label>
     <!-- Body Input -->
-    <textarea [disabled]="processing || readOnly" name="body" rows="8" cols="80" [(ngModel)]="blog.body"
-      class="form-control" placeholder="*Blog Body"></textarea>
+    <textarea [disabled]="processing || readOnly" name="body" rows="16" cols="80" [(ngModel)]="blog.body"
+      class="form-control" placeholder="*Blog Body" ></textarea>
   </div>
 
   <div *ngIf="!readOnly" class="form-group">

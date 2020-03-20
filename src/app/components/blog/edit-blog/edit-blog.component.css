@@ -1,0 +1,11 @@
+
+  :disabled,
+  [readonly] {
+    background-color: white;
+    opacity: 1;
+  }
+
+  textarea {
+    resize: none;
+    /* border: none; */
+  }
