@@ -1,38 +1,46 @@
-<h1 class="page-header">Login Page</h1>
+<div class="limiter">
+  <div class="container-login100">
+    <div class="wrap-login100">
+      <form class="login100-form validate-form">
+        <span class="login100-form-title p-b-34">
+          Account Login
+        </span>
 
-<div [ngClass]="messageClass">
-  {{ message }}
-</div>
-<!-- Registration Form -->
-<form [formGroup]="form" (submit)="onLoginSubmit()">
+        <div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
+          <input id="first-name" class="input100" type="text" name="username" placeholder="User name">
+          <span class="focus-input100"></span>
+        </div>
+        <div class="wrap-input100 rs2-wrap-input100 validate-input m-b-20" data-validate="Type password">
+          <input class="input100" type="password" name="pass" placeholder="Password">
+          <span class="focus-input100"></span>
+        </div>
 
-  <!-- Username Input -->
-  <div class="form-group">
-      <label for="username">Username</label>
-      <div [ngClass]="{'text-danger': (form.controls.username.errors && form.controls.username.dirty) || (form.controls.username.dirty), 'was-validated': !form.controls.username.errors}">
-        <input type="text" name="username" class="form-control" autocomplete="off" placeholder="*Username" formControlName="username"  />
-        <!-- Validation -->
-        <ul class="help-block">
-          <li *ngIf="form.controls.username.errors?.required && form.controls.username.dirty">This field is required</li>
-        </ul>
-      </div>
-    </div>
+        <div class="container-login100-form-btn">
+          <button class="login100-form-btn">
+            Sign in
+          </button>
+        </div>
 
-  <!-- Password Input -->
-  <div class="form-group">
-    <label for="password">Password</label>
-    <div [ngClass]="{'text-danger': (form.controls.password.errors && form.controls.password.dirty), 'was-validated': !form.controls.password.errors}">
-      <input type="password" name="password" class="form-control" autocomplete="off" placeholder="*Password" formControlName="password" />
-      <!-- Validation -->
-      <ul class="help-block">
-        <li *ngIf="form.controls.password.errors?.required && form.controls.password.dirty">This field is required</li>
-      </ul>
+        <div class="w-full text-center p-t-27 p-b-239">
+          <!-- TODO
+            <span class="txt1">
+              Forgot
+            </span> -->
+
+          <!-- <a href="#" class="txt2">
+              User name / password?
+            </a> -->
+        </div>
+
+        <div class="w-full text-center">
+          <!-- TODO
+            <a href="#" class="txt3">
+              Sign Up
+            </a> -->
+        </div>
+      </form>
+
+      <div class="login100-more" style="background-image: url('assets/img/bg-01.jpg');"></div>
     </div>
   </div>
-
-
-  <!-- Submit Input -->
-  <input [disabled]="!form.valid || processing " type="submit" class="btn btn-primary" value="Submit" />
-
-</form>
-<!-- Registration Form /-->
+</div>
