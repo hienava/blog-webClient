@@ -4,6 +4,7 @@ import { AuthService } from '../../services/auth.service';
 import { User } from '../../blObjects/user';
 import { Router } from '@angular/router';
 import { AuthGuard } from '../../guards/auth.guard';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -23,7 +24,8 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private authGuardService: AuthGuard
+    private authGuardService: AuthGuard,
+    private spinnerService: NgxSpinnerService
   ) {
     this.createForm();
   }
@@ -59,7 +61,9 @@ export class LoginComponent implements OnInit {
       password: this.form.get('password').value
     };
 
+    this.spinnerService.show();
     this.authService.login(user).subscribe(data => {
+      this.spinnerService.hide();
       this.messageClass = 'alert alert-success';
       this.message = 'Login Succeded';
       console.log('token: ', data.token);
@@ -73,6 +77,7 @@ export class LoginComponent implements OnInit {
         }
       }, 2000);
     }, (err) => {
+      this.spinnerService.hide();
       console.log('error ', err);
       this.messageClass = 'alert alert-danger';
       this.message = 'Invalid Credentials';
