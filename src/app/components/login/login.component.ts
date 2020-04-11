@@ -5,6 +5,7 @@ import { User } from '../../blObjects/user';
 import { Router } from '@angular/router';
 import { AuthGuard } from '../../guards/auth.guard';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { stringToKeyValue } from '@angular/flex-layout/extended/typings/style/style-transforms';
 
 
 @Component({
@@ -61,29 +62,40 @@ export class LoginComponent implements OnInit {
       password: this.form.get('password').value
     };
 
-    this.spinnerService.show();
-    this.authService.login(user).subscribe(data => {
-      this.spinnerService.hide();
-      this.messageClass = 'alert alert-success';
-      this.message = 'Login Succeded';
-      console.log('token: ', data.token);
-      this.authService.storeUserData(data.token, data.user);
-      setTimeout(() => {
-        if (this.previousUrl) {
-          this.router.navigate([this.previousUrl]);
-
-        } else {
-          this.router.navigate(['/blog']);
-        }
-      }, 2000);
-    }, (err) => {
-      this.spinnerService.hide();
-      console.log('error ', err);
-      this.messageClass = 'alert alert-danger';
-      this.message = 'Invalid Credentials';
+    if (user.username === '' || user.password === '') {
+      this.messageClass = 'errorMessagge';
+      this.message = 'Fields Empty';
       this.processing = false;
       this.enableForm();
-    });
+    } else {
+      this.spinnerService.show();
+      this.authService.login(user).subscribe(data => {
+        this.spinnerService.hide();
+        this.messageClass = 'successMessagge';
+        this.message = 'Login Succeded';
+        console.log('token: ', data.token);
+        this.authService.storeUserData(data.token, data.user);
+        setTimeout(() => {
+          if (this.previousUrl) {
+            this.router.navigate([this.previousUrl]);
+
+          } else {
+            this.router.navigate(['/blog']);
+          }
+        }, 2000);
+      }, (err) => {
+        this.spinnerService.hide();
+        console.log('error ', err);
+        this.messageClass = 'errorMessagge';
+        this.message = 'Invalid Credentials';
+        this.processing = false;
+        this.enableForm();
+      });
+    }
+  }
+
+  removeMessageClass() {
+    this.message = '';
   }
 
   ngOnInit() {
@@ -93,8 +105,6 @@ export class LoginComponent implements OnInit {
       this.message = 'You must be logged in to view that page';
       this.previousUrl = this.authGuardService.redirectUrl;
       this.authGuardService.redirectUrl = undefined;
-
-
     }
   }
 

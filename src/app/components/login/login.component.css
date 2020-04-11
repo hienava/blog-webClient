@@ -125,6 +125,7 @@ iframe {
   color: #999999;
 }
 
+
 .txt2 {
   font-family: Poppins-Regular;
   font-size: 13px;
@@ -138,6 +139,23 @@ iframe {
   line-height: 1.4;
   color: #00ad5f;
   text-transform: uppercase;
+}
+
+.errorMessagge {
+  font-family: Poppins-Regular;
+  font-size: 15px;
+  background-color: white;
+  line-height: 1.4;
+  color: red;
+  margin-top: 15px;
+}
+.successMessagge {
+  font-family: Poppins-Regular;
+  font-size: 15px;
+  background-color: white;
+  line-height: 1.4;
+  color:green;
+  margin-top: 15px;
 }
 
 /*[ Size ]*/
