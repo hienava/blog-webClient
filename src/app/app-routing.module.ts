@@ -16,7 +16,7 @@ import { DeleteBlogComponent } from './components/blog/delete-blog/delete-blog.c
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent
+    component: LoginComponent
   },
   {
     path: 'dashboard',

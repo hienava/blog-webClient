@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { TranslateService } from '@ngx-translate/core';
+import { AuthService } from './services/auth.service';
 
 
 @Component({
@@ -12,7 +13,8 @@ export class AppComponent implements OnInit {
   selectedLanguage = 'es';
 
   constructor(private spinnerService: NgxSpinnerService,
-              private translateService: TranslateService) {
+              private translateService: TranslateService,
+              public  authService: AuthService) {
     this.translateService.setDefaultLang(this.selectedLanguage);
     this.translateService.use(this.selectedLanguage);
   }

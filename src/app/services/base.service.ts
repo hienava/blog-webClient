@@ -6,7 +6,7 @@ import { User } from '../blObjects/user';
 
 export class BaseService {
 
-    public domain =  environment.domain;
+    public domain = environment.domain;
     // User routes
     public postUrl = '/users/register';
     public postLoginUrl = '/user/login/';
@@ -18,7 +18,7 @@ export class BaseService {
     public deleteBlogUrl = '/blogs?';
     //Files routes
     public postUpload = '/files/';
-    
+
     public authToken;
     public options;
     private user: User;
@@ -50,11 +50,11 @@ export class BaseService {
         this.authToken = null;
         this.user = null;
         localStorage.clear();
-      }
+    }
 
-      loggedIn() {
+    loggedIn() {
         const helper = new JwtHelperService();
-        return helper.isTokenExpired(localStorage.getItem('token'));
-      }
+        return !helper.isTokenExpired(localStorage.getItem('token'));
+    }
 
 }
