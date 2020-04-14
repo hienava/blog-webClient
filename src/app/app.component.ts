@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
 
   constructor(private spinnerService: NgxSpinnerService,
               private translateService: TranslateService,
-              public  authService: AuthService) {
+              private  authService: AuthService) {
     this.translateService.setDefaultLang(this.selectedLanguage);
     this.translateService.use(this.selectedLanguage);
   }
