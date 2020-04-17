@@ -61,10 +61,10 @@
     <a [routerLink]="['/delete-blog/', blog._id]"><button [disabled]="processing" *ngIf="!readOnly" type="button"
         name="button" class="btn btn-danger">Delete</button></a>
     <!-- Go Back Button -->
-    <button [disabled]="processing" type="button" name="button" class="btn btn-success" (click)="goBack()">Go
+    <button [disabled]="processing" type="button" name="button" class="btn btn-success btn-margin" (click)="goBack()">Go
       Back</button>
     <!-- Go Back Button -->
-    <button [disabled]="processing" *ngIf="isPhotoAlbum" type="button" name="button" class="btn btn-info"
+    <button [disabled]="processing" *ngIf="isPhotoAlbum" type="button" name="button" class="btn btn-info btn-margin"
       (click)="viewPhotoAlbum(photoAlbumUrl)">View Photo Album</button>
     <!-- Save Changes Button -->
     <button [disabled]="processing" *ngIf="!readOnly" type="submit" name="save" class="btn btn-info">Save
